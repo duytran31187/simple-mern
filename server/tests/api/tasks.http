@@ -1,2 +1,12 @@
 ### get all tasks 
 http://localhost:5000/tasks
+
+###create tasks
+
+POST http://localhost:5000/tasks HTTP/1.1
+content-type: application/json
+
+{
+    "name": "first task",
+    "completed": true
+}

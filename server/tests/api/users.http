@@ -7,7 +7,7 @@ POST http://localhost:5000/users HTTP/1.1
 content-type: application/json
 
 {
-    "name": "duy tran",
+    "name": "duy tran 3333",
     "age": "37"
 }
 
