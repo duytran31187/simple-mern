@@ -19,7 +19,7 @@ const createUser = (req, res) => {
         id: countId
     };
     users.push(newUser);
-    res.send('created successfully');
+    res.send(newUser);
 };
 
 const updateUser = (req, res) => {
