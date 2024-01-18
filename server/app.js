@@ -5,8 +5,8 @@ const app = express();
 const userRoutes = require('./routes/users');
 const taskRoutes = require('./routes/tasks');
 
-
-app.use(express.json()); // without this, we will not have data in req.body
+// console.log(`app locals ${JSON.stringify(app.locals)}`)
+app.use(express.json()); //  This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
 // app.use(cors());
 // const logger = (req, res, next) => {
 //     console.log(`hit server ${req.url}`);

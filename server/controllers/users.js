@@ -8,16 +8,18 @@ const users = [
 let countId = 2;
 
 const getAllUsers = (req, res) => {
-    console.log(`users ${users}`)
+    console.dir(users);
     res.send(users);
 };
 
 const createUser = (req, res) => {
     countId++;
+    // console.log(`create user with body ${JSON.stringify(req.body)}`);
     const newUser = {
-        ...req.body,
-        id: countId
+        id: countId,
+        ...req.body
     };
+    console.dir(newUser);
     users.push(newUser);
     res.send(newUser);
 };
