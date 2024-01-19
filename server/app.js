@@ -14,14 +14,13 @@ app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function 
 //     next();
 // }
 // app.use([logger]);
-
 // ROUTES --------------------------
-app.get('/', ((req, res) => { // HOMEPAGE
-    console.log('home page');
-    res.send('Home page')
-}))
+// app.get('/', ((req, res) => { // HOMEPAGE
+//     console.log('home page');
+//     res.send('Home page')
+// }))
 // route to users
-app.use('/users', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/tasks', taskRoutes);
 //----------------------------------------
 

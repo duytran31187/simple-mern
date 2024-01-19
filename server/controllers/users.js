@@ -3,8 +3,13 @@ const users = [
     {
         id: 1,
         name: 'Duy',
+        age: 37
+    },
+    {
+        id: 3,
+        name: 'Trinh',
         age: 30
-    }
+    },
 ]
 let countId = 2;
 
