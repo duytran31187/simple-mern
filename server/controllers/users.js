@@ -1,3 +1,4 @@
+const {createCustomError} = require('../errors/custom-error');
 const users = [
     {
         id: 1,
@@ -24,22 +25,23 @@ const createUser = (req, res) => {
     res.status(201).send(newUser);
 };
 
-const updateUser = (req, res) => {
-    const {id} = req.params;
-    const user = users.find(user => user.id == id);
+const updateUser = (req, res, next) => {
+    const {id: userId} = req.params;
+    const user = users.find(user => user.id == userId);
     if (!user) {
-        next(createCustomError(404,  `no user found with provided ID  ${taskID}`));
+        next(createCustomError(404,  `no user found with provided ID  ${userId}`));
     } else {
         user.name = req.body.name;
         res.status(200).send(user);
     }
 }
 
-const getUser = (req, res) => {
-    const {id} = req.params;
-    const user = users.find(user => user.id == id);
+const getUser = (req, res, next) => {
+    const {id: userId} = req.params;
+    const user = users.find(user => user.id == userId);
     if (!user) {
-        next(createCustomError(404,  `no user found with provided ID  ${taskID}`));
+        const customErrorIns = createCustomError(404,  `no user found with provided ID  ${userId}`);
+        next(customErrorIns);
     } else {
         res.status(200).send(user);
     }
@@ -48,7 +50,7 @@ const getUser = (req, res) => {
 const deleteUser = (req, res) => {
     const {id} = req.params;
     users.filter(user => user.id !== id);
-    res.status(200).send('delete User successfully');
+    res.status(200).send(`delete User successfully`);
 }
 
 module.exports = { getAllUsers, createUser, updateUser, getUser, deleteUser }

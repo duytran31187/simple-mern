@@ -15,6 +15,10 @@ content-type: application/json
 
 http://localhost:5000/users/1
 
+### get invalid user
+
+http://localhost:5001/users/1234
+
 ### update user 1
 
 PATCH http://localhost:5000/users/1 HTTP/1.1
@@ -24,6 +28,17 @@ content-type: application/json
     "name": "duy tran - updated",
     "age": "37"
 }
+
+### update invalid user
+
+PATCH http://localhost:5001/users/1234 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "duy tran - updated",
+    "age": "37"
+}
+
 
 ### delete user
 
