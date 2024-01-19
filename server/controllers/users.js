@@ -9,7 +9,7 @@ let countId = 2;
 
 const getAllUsers = (req, res) => {
     console.dir(users);
-    res.send(users);
+    res.status(200).send(users);
 };
 
 const createUser = (req, res) => {
@@ -21,7 +21,7 @@ const createUser = (req, res) => {
     };
     console.dir(newUser);
     users.push(newUser);
-    res.send(newUser);
+    res.status(201).send(newUser);
 };
 
 const updateUser = (req, res) => {
@@ -31,7 +31,7 @@ const updateUser = (req, res) => {
         next(createCustomError(404,  `no user found with provided ID  ${taskID}`));
     } else {
         user.name = req.body.name;
-        res.send(user);
+        res.status(200).send(user);
     }
 }
 
@@ -48,7 +48,7 @@ const getUser = (req, res) => {
 const deleteUser = (req, res) => {
     const {id} = req.params;
     users.filter(user => user.id !== id);
-    res.send('delete User successfully');
+    res.status(200).send('delete User successfully');
 }
 
 module.exports = { getAllUsers, createUser, updateUser, getUser, deleteUser }
