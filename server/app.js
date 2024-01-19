@@ -7,8 +7,7 @@ const taskRoutes = require('./routes/tasks');
 const notFound = require('./middlewares/not-found');
 const errorHandler = require('./middlewares/error-handler');
 
-// console.log(`app locals ${JSON.stringify(app.locals)}`)
-app.use(express.json()); //  This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
+app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
 // app.use(cors());
 // const logger = (req, res, next) => {
 //     console.log(`hit server ${req.url}`);
@@ -16,19 +15,19 @@ app.use(express.json()); //  This is a built-in middleware function in Express. 
 // }
 // app.use([logger]);
 
-//routes
-// home page
-app.get('/', ((req, res) => {
+// ROUTES --------------------------
+app.get('/', ((req, res) => { // HOMEPAGE
     console.log('home page');
     res.send('Home page')
 }))
 // route to users
 app.use('/users', userRoutes);
 app.use('/tasks', taskRoutes);
+//----------------------------------------
 
 
-app.use(notFound); // if we put before route handlers, it will throws error always
-app.use(errorHandler);
+app.use(notFound); // [MIDDLEWARE] if we put before route handlers, it will throws error always
+app.use(errorHandler); // [MIDDLEWARE] error handler
 
 const start = async () => {
     const PORT = process.env.PORT || 5000;
