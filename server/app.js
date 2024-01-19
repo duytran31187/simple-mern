@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const userRoutes = require('./routes/users');
 const taskRoutes = require('./routes/tasks');
+const notFound = require('./middlewares/not-found');
 
 // console.log(`app locals ${JSON.stringify(app.locals)}`)
 app.use(express.json()); //  This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
@@ -24,6 +25,8 @@ app.get('/', ((req, res) => {
 app.use('/users', userRoutes);
 app.use('/tasks', taskRoutes);
 
+
+app.use(notFound); // if we put before route handlers, it will throws error always
 
 const start = async () => {
     const PORT = process.env.PORT || 5000;
