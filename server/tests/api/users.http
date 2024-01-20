@@ -1,9 +1,9 @@
-### get all users 
-http://localhost:5001/users
+### get all users 5001/api/users
+http://localhost:5001/api/users
 
 ### create user
 
-POST http://localhost:5000/users HTTP/1.1
+POST http://localhost:5001/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -13,15 +13,15 @@ content-type: application/json
 
 ### get user
 
-http://localhost:5000/users/1
+http://localhost:5001/api/users/1
 
 ### get invalid user
 
-http://localhost:5001/users/1234
+http://localhost:5001/api/users/1234
 
 ### update user 1
 
-PATCH http://localhost:5000/users/1 HTTP/1.1
+PATCH http://localhost:5001/api/users/1 HTTP/1.1
 content-type: application/json
 
 {
@@ -31,7 +31,7 @@ content-type: application/json
 
 ### update invalid user
 
-PATCH http://localhost:5001/users/1234 HTTP/1.1
+PATCH http://localhost:5001/api/users/1234 HTTP/1.1
 content-type: application/json
 
 {
@@ -42,7 +42,7 @@ content-type: application/json
 
 ### delete user
 
-DELETE http://localhost:5001/users/3
+DELETE http://localhost:5001/api/users/3
 
 
 ### not found route

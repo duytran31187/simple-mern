@@ -14,6 +14,11 @@ app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function 
 //     next();
 // }
 // app.use([logger]);
+// express.static
+app.use(
+    '/', // go to http://localhost:5001/
+    express.static('public') // then render html file in public
+);
 // ROUTES --------------------------
 // app.get('/', ((req, res) => { // HOMEPAGE
 //     console.log('home page');
@@ -21,7 +26,7 @@ app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function 
 // }))
 // route to users
 app.use('/api/users', userRoutes);
-app.use('/tasks', taskRoutes);
+app.use('/api/tasks', taskRoutes);
 //----------------------------------------
 
 
