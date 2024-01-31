@@ -30,26 +30,6 @@ app.use(
 // route to users
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
-//----------------------------------------
-app.get('/api/img', async (req, res, next) => {
-    // try {
-        const OpenAI = require('openai');
-        const openai = new OpenAI();
-        console.log('start...........');
-        const response = await openai.images.generate({
-            model: "dall-e-3",
-            prompt: "a newborn named Siro",
-            n: 1,
-            size: "1024x1024",
-        });
-        image_url = response.data.data[0].url;
-        console.log(`data ${JSON.stringify(response)}`);  
-        console.log(`image_url ${JSON.stringify(image_url)}`);
-        res.status(200).send({imageUrl: image_url});
-    // } catch (error) {
-    //     res.status(400).send('cant generate image')
-    // }
-});
 
 
 app.use(notFound); // [MIDDLEWARE] if we put before route handlers, it will throws error always
