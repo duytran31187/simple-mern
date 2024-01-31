@@ -6,9 +6,6 @@ const HomePage = (props) => {
     return (
         <section>
             Home page
-            <section>
-                <Link to='/create-post'><Button variant="contained">Create Post</Button></Link>
-            </section>
         </section>
     );
 }

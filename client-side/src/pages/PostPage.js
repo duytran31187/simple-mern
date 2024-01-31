@@ -6,9 +6,6 @@ const PostPage = (props) => {
     return (
         <section>
             Post page
-            <section>
-                <Link to='/'><Button variant="contained">Home</Button></Link>
-            </section>
         </section>
     );
 }
