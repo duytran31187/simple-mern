@@ -1,14 +1,26 @@
 import * as React from  'react';
 import Button from  '@mui/material/Button';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
+import PostPage from './pages/PostPage';
+import HomePage from './pages/HomePage';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    id: "rootRouter",
+    children: [
+      {index: true, element: <HomePage />},
+      {path: '/create-post', element: <PostPage />},
+      
+    ]
+  }
+]);
 function App() {
   return (
-    <div className="App">
-      <h1>
-        APPPPPPPPPPPP
-      </h1>
-      <Button variant='contained'>Material button</Button>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
