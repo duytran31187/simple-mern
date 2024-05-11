@@ -1,6 +1,15 @@
 const getTasks = async () => {
     const response = await fetch(
-        'http://localhost:5001/api/tasks');
+        'http://localhost:5001/api/tasks',
+        { 
+          method: 'get', 
+          headers: new Headers({
+            // Your header content
+            'x-api-key': '123456',
+            'content-type': 'application/json'
+          })
+        }
+      );
   
     if (!response.ok) {
         console.error(response);

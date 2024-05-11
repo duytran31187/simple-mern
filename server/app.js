@@ -7,6 +7,7 @@ const userRoutes = require('./routes/users');
 const taskRoutes = require('./routes/tasks');
 const notFound = require('./middlewares/not-found');
 const errorHandler = require('./middlewares/error-handler');
+const apiAuth = require('./middlewares/apiAuth');
 
 // const fs = require('fs');
 
@@ -33,6 +34,9 @@ app.use(
 // route to users
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
+app.post('/api/auth', (req, res) => {
+ // authenticate user
+});
 
 
 app.use(notFound); // [MIDDLEWARE] if we put before route handlers, it will throws error always
