@@ -5,7 +5,7 @@ const {createCustomError} = require('../errors/custom-error');
 const getAllTasks = asyncWrapper(async (req, res) => {
     // it will filter only fields defined in schema only.
     const tasks = await TaskModel.find({});
-    res.status(200).json({ tasks });
+    res.status(200).json( tasks );
 });
 
 const createTask = asyncWrapper(async (req, res) => {

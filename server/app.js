@@ -1,6 +1,7 @@
 require('dotenv').config(); //  dotenv to read env variables
 const connectDb = require('./db/connect');
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const userRoutes = require('./routes/users');
 const taskRoutes = require('./routes/tasks');
@@ -11,7 +12,9 @@ const errorHandler = require('./middlewares/error-handler');
 
 
 app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
-// app.use(cors());
+// app.use(cors({ // ref: https://expressjs.com/en/resources/middleware/cors.html
+//     origin: 'http://localhost:3000'
+// }));
 // const logger = (req, res, next) => {
 //     console.log(`hit server ${req.url}`);
 //     next();
