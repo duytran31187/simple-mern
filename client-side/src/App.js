@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import PostPage from './pages/PostPage';
 import HomePage from './pages/HomePage';
+import TasksPage from './pages/TasksPage';
 import RootLayout from './pages/Root';
 
 const router = createBrowserRouter([
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {index: true, element: <HomePage />},
       {path: '/create-post', element: <PostPage />},
-      
+      {path: '/tasks', element: <TasksPage />},
     ]
   }
 ]);

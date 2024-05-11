@@ -14,6 +14,13 @@ const MainNavigation = () => {
             >
                 Create Post
             </Link>
+            <Link
+                underline="hover"
+                color="inherit"
+                href="/tasks"
+            >
+                Tasks
+            </Link>
             <Typography color="text.primary">Breadcrumbs</Typography>
         </Breadcrumbs>
     )
