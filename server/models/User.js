@@ -21,9 +21,10 @@ const UserSchema = new mongoose.Schema(
         age: {
             type: Number,
             required: false
-        },
+        }
     },
     {
+        timestamps: true,
         methods: {
             findUsersSameAge(cb) {
                 return mongoose.model('User').find({ age: this.age }, cb);
