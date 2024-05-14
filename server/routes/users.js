@@ -5,12 +5,12 @@ const {getAllUsers, createUser, updateUser, getUser, deleteUser, getUserByEmail,
 router.route('/')
  .get(getAllUsers)
  .post(createUser);
- router.route('/:id(\[a-z0-9]{24})') // remove (\[a-z0-9]{24}), then id can be anything
+ router.route('/:id([a-z0-9]{24})') // remove (\[a-z0-9]{24}), then id can be anything
     .get(getUser)
     .patch(updateUser)
     .delete(deleteUser);
 
-router.route('/:email(\[a-z0-9]+@[a-z0-9]+.[a-z0-9]+)')
+router.route('/:email([a-z0-9]+@[a-z0-9]+.[a-z0-9]+)')
     .get(getUserByEmail)
 router.route('/password/:password')
     .get(getUserByPassword)        
