@@ -7,13 +7,14 @@ POST http://localhost:5001/api/users HTTP/1.1
 content-type: application/json
 
 {
-    "name": "duy tran 3333",
-    "age": "37"
+    "name": "duy 2",
+    "email": "duy@test.vn",
+    "password": "1234"
 }
 
 ### get user
 
-http://localhost:5001/api/users/1
+http://localhost:5001/api/users/664360bf84a02f5edcc2d430
 
 ### get invalid user
 
@@ -21,12 +22,12 @@ http://localhost:5001/api/users/1234
 
 ### update user 1
 
-PATCH http://localhost:5001/api/users/1 HTTP/1.1
+PATCH http://localhost:5001/api/users/664360bf84a02f5edcc2d430 HTTP/1.1
 content-type: application/json
 
 {
     "name": "duy tran - updated",
-    "age": "37"
+    "email": "duy-updated@test.vn"
 }
 
 ### update invalid user
@@ -41,8 +42,16 @@ content-type: application/json
 
 
 ### delete user
+DELETE http://localhost:5001/api/users/66434d633706192929d98c10
 
-DELETE http://localhost:5001/api/users/3
+### find by email
+
+http://localhost:5001/api/users/duy@test.vn
+
+
+### find by password
+
+http://localhost:5001/api/users/password/1234
 
 
 ### not found route
