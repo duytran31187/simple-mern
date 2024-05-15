@@ -8,6 +8,7 @@ const taskRoutes = require('./routes/tasks');
 const notFound = require('./middlewares/not-found');
 const errorHandler = require('./middlewares/error-handler');
 const apiAuth = require('./middlewares/apiAuth');
+const debugRequest = require('./middlewares/debugRequest');
 
 // const fs = require('fs');
 
@@ -31,6 +32,7 @@ app.use(
 //     console.log('home page');
 //     res.send('Home page')
 // }))
+app.use('/', debugRequest);
 // route to users
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);

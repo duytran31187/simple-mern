@@ -3,7 +3,7 @@ const {UserModel} = require('../models/User');
 
 const getAllUsers = async (req, res) => {
     const users = await UserModel.find({});
-    console.dir(users);
+    // console.dir(users);
     res.status(200).send(users);
 };
 
