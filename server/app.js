@@ -1,16 +1,14 @@
 require('dotenv').config(); //  dotenv to read env variables
 const connectDb = require('./db/connect');
 const express = require('express');
-const cors = require('cors')
+const path = require('path');
 const app = express();
 const userRoutes = require('./routes/users');
 const taskRoutes = require('./routes/tasks');
 const notFound = require('./middlewares/not-found');
 const errorHandler = require('./middlewares/error-handler');
-const apiAuth = require('./middlewares/apiAuth');
 const debugRequest = require('./middlewares/debugRequest');
-
-// const fs = require('fs');
+const { UserModel } = require('./models/User');
 
 
 app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
@@ -27,6 +25,25 @@ app.use(
     '/', // go to http://localhost:5001/
     express.static('public') // then render html file in public
 );
+app.set('view engine', 'ejs'); // set the view engine to ejs, which is a templating engine and must be installed in the project
+app.set('views', path.join(__dirname, 'views')); // set the views directory to the views folder
+
+app.get('/admin/users', async(req,res, next) => {
+    let users = await UserModel.find({});
+    // users = foundUsers.map(user => {
+    //     user.url = app.route('/admin/users/' + user._id);
+    // });
+    app.locals.userUrl = app.route('/admin/users/');
+    console.log(app.locals.userUrl);
+    res.render('users', {users});
+});
+app.get('/admin/users/:userId', async(req,res) => {
+    const {userId} = req.params;
+    const user = await UserModel.findOne({_id: userId});
+    console.log(JSON.stringify(user));
+    res.render('user-detail', {user});
+});
+
 // ROUTES --------------------------
 // app.get('/', ((req, res) => { // HOMEPAGE
 //     console.log('home page');

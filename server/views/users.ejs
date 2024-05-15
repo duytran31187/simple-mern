@@ -1,0 +1,6 @@
+<h1>list user admin</h1>
+<ul>
+    <% for (i=0;i<users.length;i++) { %>
+        <li><a href="/admin/users/<%= users[i]._id %>"><%= users[i].name %></a><b>email:</b> <%= users[i].email %></li>
+    <% } %>
+</ul>
