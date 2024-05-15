@@ -11,6 +11,8 @@ Use Express to create server to:
 # some knowledge
 - CommonJS modules are the original way to package JavaScript code for Node.js
 - REPL (ex: console): Read - Evaluate - Print - Loop
+res.locals: used to store data in request without sharing
+app.locals: used to store data and share between requests   
 --------------
 # Mongoose
 - By default, Mongoose adds an _id property to your schemas.

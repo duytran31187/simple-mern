@@ -9,6 +9,7 @@ const apiAuth = (req, res, next) => {
     //validate use api-key
     if (req.header(API_KEY) == VALID_API_KEY) {// if contain valid api key
         console.log(`validated`);
+        res.locals.authenticatedUser= 'user authenticated with api'; // sample how to use res.locals
         return next();
     }
     // validate with basic auth
@@ -22,6 +23,7 @@ const apiAuth = (req, res, next) => {
     // // verify auth credentials
     // header will contains: 'Basic asdfaqw'
     if ( req.headers.authorization && req.headers.authorization.indexOf('Basic ') !== -1) {
+        res.locals.authenticatedUser= 'user authenticated via basic'; // sample how to use res.locals
         const base64Credentials =  req.headers.authorization.split(' ')[1];
         const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
         const [username, password] = credentials.split(':');

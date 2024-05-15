@@ -4,6 +4,7 @@ const {createCustomError} = require('../errors/custom-error');
 
 const getAllTasks = asyncWrapper(async (req, res) => {
     // it will filter only fields defined in schema only.
+    console.log(`authenticated user: %s`, res.locals.authenticatedUser);
     const tasks = await TaskModel.find({});
     res.status(200).json( tasks );
 });

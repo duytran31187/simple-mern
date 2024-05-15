@@ -32,7 +32,7 @@ app.use(
 //     console.log('home page');
 //     res.send('Home page')
 // }))
-app.use('/', debugRequest);
+app.use(debugRequest); // apply debugRequest middleware to all  
 // route to users
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
