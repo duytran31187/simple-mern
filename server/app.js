@@ -33,9 +33,7 @@ app.get('/admin/users', async(req,res, next) => {
     // users = foundUsers.map(user => {
     //     user.url = app.route('/admin/users/' + user._id);
     // });
-    app.locals.userUrl = app.route('/admin/users/');
-    console.log(app.locals.userUrl);
-    res.render('users', {users});
+    res.render('users', {users: users, userUrl: '/admin/users/'});
 });
 app.get('/admin/users/:userId', async(req,res) => {
     const {userId} = req.params;
