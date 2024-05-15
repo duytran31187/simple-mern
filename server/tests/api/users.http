@@ -1,5 +1,5 @@
 ### get all users 5001/api/users
-http://localhost:5001/api/users
+http://localhost:5001/api/users?param1=a&param2=b
 
 ### create user
 
@@ -7,8 +7,8 @@ POST http://localhost:5001/api/users HTTP/1.1
 content-type: application/json
 
 {
-    "name": "duy 2",
-    "email": "duy@test.vn",
+    "name": "duy 233",
+    "email": "duy222@test.vn",
     "password": "1234"
 }
 

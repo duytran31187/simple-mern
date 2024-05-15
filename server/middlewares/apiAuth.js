@@ -14,18 +14,20 @@ const apiAuth = (req, res, next) => {
     // validate with basic auth
 
     // check for basic auth header
-    console.log(`req.headers.authorization`, req.headers.authorization);
-    if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
-        return res.status(401).json({ message: 'Missing Authorization Header' });
-    }
+    // console.log(`req.headers.authorization`, req.headers.authorization);
+    // if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
+    //     return res.status(401).json({ message: 'Missing Authorization Header' });
+    // }
 
     // // verify auth credentials
     // header will contains: 'Basic asdfaqw'
-    const base64Credentials =  req.headers.authorization.split(' ')[1];
-    const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-    const [username, password] = credentials.split(':');
-    if (username == VALID_USER && password == VALID_PWD) {
-        return next();
+    if ( req.headers.authorization && req.headers.authorization.indexOf('Basic ') !== -1) {
+        const base64Credentials =  req.headers.authorization.split(' ')[1];
+        const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
+        const [username, password] = credentials.split(':');
+        if (username == VALID_USER && password == VALID_PWD) {
+            return next();
+        }
     }
     return res.status(401).json({message: 'You are not allowed to access this resource'});
     

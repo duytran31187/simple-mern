@@ -1,5 +1,5 @@
 const {createCustomError} = require('../errors/custom-error');
-const {UserModel, UserSchema} = require('../models/User');
+const {UserModel} = require('../models/User');
 
 const getAllUsers = async (req, res) => {
     const users = await UserModel.find({});

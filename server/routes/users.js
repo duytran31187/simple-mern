@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {getAllUsers, createUser, updateUser, getUser, deleteUser, getUserByEmail, getUserByPassword} = require('../controllers/users')
+const {getAllUsers, createUser, updateUser, getUser, deleteUser, getUserByEmail, getUserByPassword} = require('../controllers/users');
+const debugRequest = require('../middlewares/debugRequest');
 
+router.use('/', debugRequest);
 router.route('/')
  .get(getAllUsers)
  .post(createUser);

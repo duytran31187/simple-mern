@@ -1,8 +1,8 @@
-### get all tasks 
+### get all tasks     
 http://localhost:5001/api/tasks
+Authorization: Basic YWRtaW46cHdk
 
 ###create tasks
-
 POST http://localhost:5001/api/tasks HTTP/1.1
 content-type: application/json
 
