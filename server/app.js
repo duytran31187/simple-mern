@@ -9,8 +9,8 @@ const notFound = require('./middlewares/not-found');
 const errorHandler = require('./middlewares/error-handler');
 const debugRequest = require('./middlewares/debugRequest');
 const { UserModel } = require('./models/User');
-
-
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json()); // [MIDDLEWARE] This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
 // app.use(cors({ // ref: https://expressjs.com/en/resources/middleware/cors.html
 //     origin: 'http://localhost:3000'
@@ -35,11 +35,26 @@ app.get('/admin/users', async(req,res, next) => {
     // });
     res.render('users', {users: users, userUrl: '/admin/users/'});
 });
-app.get('/admin/users/:userId', async(req,res) => {
+app.get('/admin/users/create', async(req,res) => {
+    res.render('form', {user: null, message: null, adding: true});
+});
+app.get('/admin/users/:userId([a-z0-9]{24})', async(req,res) => {
     const {userId} = req.params;
     const user = await UserModel.findOne({_id: userId});
-    console.log(JSON.stringify(user));
+    console.log(JSON.stringify(user));  
     res.render('user-detail', {user});
+});
+app.post('/admin/users/save', async(req,res) => {
+    
+    console.log(`req data %o`, req.body);
+    const newUser = new UserModel(req.body);
+    console.log(newUser);
+    try {
+        await newUser.save();
+        res.redirect('/admin/users/');
+    } catch (err) {
+        res.render('form', {user: null, message: err.message, adding: true});
+    }
 });
 
 // ROUTES --------------------------

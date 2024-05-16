@@ -1,0 +1,52 @@
+<% if(!user) { %>
+<h1>Add User</h1>
+<form action="/admin/users/save" method="post">
+    <div class="form-control">
+        <input
+          type="text"
+          name="name"
+          class="text-input"
+          placeholder="name"
+        />
+    </div>
+    <div class="form-control">
+        <input
+          type="text"
+          name="email"
+          class="text-input"
+          placeholder="email"
+        />
+    </div>
+    <div class="form-control">
+        <input
+          type="text"
+          name="password"
+          class="text-input"
+          placeholder="password"
+        />
+    </div>
+    <div class="form-control">
+        <input
+          type="number"
+          name="age"
+          class="text-input"
+          placeholder="age"
+        />
+    </div>
+    <div class="form-control">
+        <input
+          type="text"
+          name="user[phone]"
+          class="text-input"
+          placeholder="[0-9]{9}"
+        />
+    </div>
+    <button type="submit" class="btn submit-btn">submit</button>
+    <% if(message) { %>
+        <div class="form-alert"><%= message %></div>
+    <% } %>
+    
+</form>
+<% } else {%>
+<h1>Update user</h1>
+<% } %>

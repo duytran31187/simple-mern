@@ -10,7 +10,9 @@ content-type: application/json
 {
     "name": "duy 233",
     "email": "duy222@test.vn",
-    "password": "1234"
+    "password": "1234",
+    "phone": "123456789",
+    "age": 333
 }
 
 ### get user
@@ -57,3 +59,14 @@ http://localhost:5001/api/users/password/1234
 
 ### not found route
 http://localhost:5001/not-found
+
+
+### form to create user
+
+PATCH http://localhost:5001/api/users/664360bf84a02f5edcc2d430 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "duy tran - updated",
+    "email": "duy-updated@test.vn"
+}

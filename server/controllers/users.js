@@ -8,8 +8,12 @@ const getAllUsers = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-    const newUser = await UserModel.create(req.body);
-    res.status(201).send(newUser);
+    try {
+        const newUser = await UserModel.create(req.body);
+        res.status(201).send(newUser);
+    } catch ( e) {
+        res.status(400).send(e.message);
+    }
 };
 
 const updateUser = async (req, res, next) => {

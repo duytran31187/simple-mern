@@ -1,4 +1,5 @@
 <h1>list user admin</h1>
+<a href="/admin/users/create"><button>Create User</button></a>
 <ul>
     <% for (i=0;i<users.length;i++) { %>
         <li><a href="<%= userUrl %><%= users[i]._id %>"><%= users[i].name %></a><b>email:</b> <%= users[i].email %></li>

@@ -3,7 +3,6 @@ const { schema } = require('./Task')
 // https://mongoosejs.com/docs/guide.html
 // we just need define a schema, model here
 // we dont need to manual create table on mongo
-
 const UserSchema = new mongoose.Schema(
     {
         name: {
@@ -20,6 +19,18 @@ const UserSchema = new mongoose.Schema(
         },
         age: {
             type: Number,
+            required: false,
+            min: 10,
+            max: 100
+        },
+        phone: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    return /[0-9]{9}/.test(v);
+                },
+                message: props => `${props.value} is not a valid phone number!`
+            },
             required: false
         }
     },
